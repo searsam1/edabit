@@ -13,4 +13,17 @@ def periodic(s):
         nextTerm = getNextTerm(nextTerm)
         arr.append(nextTerm)
     return len(arr) - 1
-print(periodic("1234567"))
+
+# More efficient and readable solution
+def periodic(n):
+	s, l, terms, count = str(n), len(str(n)), {n}, 1
+	while True:
+		s = (s + str(sum(map(int, s))))[-l:]
+		if s in terms:
+			return count
+		count += 1
+		terms.add(s)
+            
+import random
+n = random.randint(0, 668)
+print(n)
